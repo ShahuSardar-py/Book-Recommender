@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <title>Book Recommender App</title>
+    <style>
+        body {
+            font-family: Poppins;
+            margin: 0;
+            padding: 0;
+            background-color: #1a1a1a;
+            color: #f2f2f2;
+        }
+
+        /* Navbar Styling */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #333;
+            padding: 10px 20px;
+        }
+
+        .navbar h1 {
+            color: #ffa500;
+        }
+
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar ul li {
+            margin-left: 20px;
+        }
+
+        .navbar ul li a {
+            text-decoration: none;
+            color: #f2f2f2;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+
+        .navbar ul li a:hover {
+            color: #ffa500;
+        }
+
+        /* Heading Styling */
+        h2 {
+            text-align: center;
+            font-size: 36px;
+            margin-top: 20px;
+            margin-bottom: 40px;
+            color: #FFD23F;
+            
+        }
+
+        /* Card Container */
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            padding: 0 50px;
+        }
+
+        /* Card Styling */
+        .card {
+            background-color: #333;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s;
+            
+        }
+
+        .card img {
+            width: 100%;
+            height: auto;
+            object-fit: contain; /* Ensures the image fits within the container without being cropped */
+            max-height: 300px;    /* Set a max-height to control the size for portrait images */
+            border-radius: 8px;
+        }
+
+        .card h3, .card p {
+            margin: 10px 0;
+        }
+
+        .card h3 {
+            font-size: 20px;
+            color: #ffa500;
+        }
+
+        .card p {
+            font-size: 16px;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <div class="navbar">
+        <h1>Book Recommender</h1>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Recommend</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </div>
+
+    <!-- Page Heading -->
+    <h2>Top 50 Books</h2>
+
+    <!-- Card Container -->
+
+    <div class="card-container">
+        {%for i in range(book_name|length)%}
+        <div class="card">
+           <img src="{{ img[i] }}" alt="Book Image">
+           <h3>{{ book_name[i] }}</h3>
+           <p>{{ author_name[i] }}</p>
+           <p>Votes: {{ votes[i] }}</p>
+           <p>Rating: {{ ratings[i] }}</p>
+       </div>
+        {% endfor %}
+        <!-- Sample Card 1 -->
+        
+
+
+
+        <!-- Repeat as needed for more books -->
+    </div>
+</body>
+</html>
