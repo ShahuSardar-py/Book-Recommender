@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Recommender</title>
+    <style>
+        body {
+            background-color: #1e1e1e;
+            color: #f5f5f5;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar {
+            background-color: #333;
+            padding: 15px;
+            text-align: center;
+        }
+        .navbar a {
+            color: #ffa500;
+            margin: 0 20px;
+            text-decoration: none;
+            font-size: 18px;
+        }
+        .navbar a:hover {
+            color: #fff;
+        }
+        .container {
+            max-width: 800px;
+            margin: 100px auto;
+            text-align: center;
+        }
+        h1 {
+            font-size: 36px;
+            color: #ffa500;
+        }
+        form {
+            margin-top: 20px;
+        }
+        input[type="text"] {
+            width: 70%;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 2px solid #ffa500;
+            background-color: #2c2c2c;
+            color: #f5f5f5;
+        }
+        input[type="submit"] {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #ffa500;
+            border: none;
+            border-radius: 5px;
+            color: #333;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #ff8c00;
+        }
+    
+        /* Flexbox styling for book cards */
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 30px;
+        }
+        .card {
+            background-color: #2c2c2c;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 10px;
+            width: 200px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .card img {
+            width: 100%;
+            height: 250px;  /* Increased height for better portrait orientation */
+            object-fit: contain;  /* Ensures the aspect ratio is maintained */
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+        .card h3 {
+            font-size: 18px;
+            color: #ffa500;
+        }
+        .card p {
+            color: #ccc;
+        }
+    </style>
+    
+</head>
+<body>
+    <!-- Navbar -->
+    <div class="navbar">
+        <a href="/">Home</a>
+        <a href="/recommend">Recommend</a>
+        <a href="https://github.com/ShahuSardar-py/Book-Recommender">Github</a>
+    </div>
+
+    <!-- Container -->
+    <div class="container">
+        <h1>Book Recommender</h1>
+        
+        <!-- Form to take book input -->
+        <form action="/recommend-books" method="post">
+            <input type="text" name="book_name" placeholder="Enter a book name" required>
+            <br><br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+    
+    {% if data %}
+
+    <!-- Book cards displayed in a row using Flexbox -->
+    <div class="card-container">
+        {% for i in data %}
+            <div class="card">
+                <img src="{{i[2]}}" alt="Book Image">
+                <h3>{{ i[0] }}</h3>
+                <p>{{ i[1] }}</p>
+                
+            </div>
+        {% endfor %}
+    </div>
+
+    {% endif %}
+</body>
+<footer>
+    <p style="text-align: center;">Project by <a style="color: whitesmoke;"" href="https://github.com/ShahuSardar-py">Shahu Sardar</a></p>
+</footer>
+</html>
